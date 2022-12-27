@@ -20,6 +20,8 @@ steps:
         if [ $BRANCH_NAME == 'develop' ]
         then
           echo "Branch is = $BRANCH_NAME" && app deploy
+        fi
+        
         if [ $BRANCH_NAME == 'master' ]
         then
           echo "Branch is = $BRANCH_NAME" && app deploy
