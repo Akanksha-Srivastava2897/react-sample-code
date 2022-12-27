@@ -13,6 +13,16 @@ steps:
 # Step 3: This step will execute app.yaml in your folder and deploy your app based on the configuration specified
   - name: "gcr.io/cloud-builders/gcloud"
     id: Deploy
-    args: ["app", "deploy"]
+    entrypoint: "sh"
+    args:
+      - -c
+      - |
+        if [ $BRANCH_NAME == 'develop' ]
+        then
+          echo "Branch is = $BRANCH_NAME" && app deploy
+        if [ $BRANCH_NAME == 'master' ]
+        then
+          echo "Branch is = $BRANCH_NAME" && app deploy
+        fi
 # timeout specified for this step as deployment may take more that default time(10min)
     timeout: "30m0s" 
