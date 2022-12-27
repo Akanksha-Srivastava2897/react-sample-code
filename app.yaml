@@ -1,0 +1,16 @@
+# Node Version
+runtime:  nodejs16
+# App Engine Environment
+env:  standard
+default_expiration : "0d 1h"
+
+handlers:
+ - url: /
+    static_files: build/index.html
+    upload: build/index.html
+  - url: /
+    static_dir: build
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
