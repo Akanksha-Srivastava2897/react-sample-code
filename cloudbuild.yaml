@@ -1,0 +1,18 @@
+steps:
+# frontend deployment
+# Step 1: For installing dependencies
+  - name: "gcr.io/cloud-builders/npm"
+    id: Install
+    args: ["install"]
+
+# Step 2: For creating optinimized build
+  - name: "gcr.io/cloud-builders/npm"
+    id: Build
+    args: ["run", "build"]
+
+# Step 3: This step will execute app.yaml in your folder and deploy your app based on the configuration specified
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: Deploy
+    args: ["app", "deploy"]
+# timeout specified for this step as deployment may take more that default time(10min)
+    timeout: "30m0s" 
