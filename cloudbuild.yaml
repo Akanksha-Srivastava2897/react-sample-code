@@ -19,12 +19,12 @@ steps:
       - |
         if [ $BRANCH_NAME == 'develop' ]
         then
-          echo "Branch = $BRANCH_NAME" && gcloud app deploy
+          echo "Branch is = $BRANCH_NAME" && gcloud app deploy
         fi
         
         if [ $BRANCH_NAME == 'master' ]
         then
-          echo "Branch = $BRANCH_NAME" && gcloud app deploy
+          echo "Branch is = $BRANCH_NAME" && gcloud app deploy
         fi
 # timeout specified for this step as deployment may take more that default time(10min)
     timeout: "30m0s" 
